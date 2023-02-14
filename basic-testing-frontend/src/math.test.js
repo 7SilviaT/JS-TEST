@@ -14,3 +14,22 @@ test("should add all numbers from an array", ()=>{
     prevValue + currValue,0);
   expect(result).toBe(expectedResult);
 });
+
+test("should yield NaN if a least one invalid number is provided",()=>{
+  const inputs = [ "invalid", 2];
+  const result = add(inputs);
+
+  expect(result).toBeNaN();
+
+})
+
+test("should yield a correct sum if an array of string values is provided",()=>{
+  const numbers = ["1", "2"];
+  const result = add(numbers);
+
+  const expectedResult = numbers.reduce(
+    (prevValue,curValue)=> +prevValue + +curValue,0
+  )
+
+  expect(result).toBe(expectedResult);
+})
