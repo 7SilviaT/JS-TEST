@@ -33,3 +33,29 @@ test("should yield a correct sum if an array of string values is provided",()=>{
 
   expect(result).toBe(expectedResult);
 })
+
+test("should return 0 if the array is empty",()=>{
+  const numbers = [];
+  const result = add(numbers);
+
+  expect(result).toBe(0);
+})
+
+test("should throw an error if no value is passed into a function",()=>{
+  const resultFn = ()=>{
+    add();
+  };
+
+  expect(resultFn).toThrow(/is not iterable/);
+})
+
+test("should throw an error if multiple arguments are provided instead of an array",()=>{
+  const num1 = 1;
+  const num2 = 2;
+
+  const resultFn = () =>{
+    add(num1,num2);
+  }
+
+  expect(resultFn).toThrow(/is not iterable/)
+})
